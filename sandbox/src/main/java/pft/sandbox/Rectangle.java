@@ -2,8 +2,8 @@ package pft.sandbox;
 
 public class Rectangle {
 
-    public double a;
-    public double b;
+    private double a;
+    private double b;
 
     public Rectangle(double a, double b) {
         this.a = a;

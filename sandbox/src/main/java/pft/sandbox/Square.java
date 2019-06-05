@@ -2,7 +2,7 @@ package pft.sandbox;
 
 public class Square {
 
-    public double l;
+    private double l;
 
     public Square(double l){
         this.l = l;
