@@ -2,11 +2,11 @@ package pft.addressbook.tests;
 
 import org.testng.annotations.Test;
 
-public class GroupDeletingTest extends TestBase {
+public class GroupDeletingTests extends TestBase {
 
 
     @Test
-    public void testGroupDeleting() throws Exception {
+    public void testGroupDeleting(){
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().deleteSelectedGroups();
