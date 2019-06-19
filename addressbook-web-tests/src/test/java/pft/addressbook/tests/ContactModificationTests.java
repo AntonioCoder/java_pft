@@ -5,7 +5,7 @@ import pft.addressbook.model.ContactData;
 
 public class ContactModificationTests extends TestBase {
 
-    @Test
+    @Test(enabled = false)
     public void testContactModification(){
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("a", "a", "a", "a", "a", "a", null), false);

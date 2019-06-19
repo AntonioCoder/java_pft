@@ -5,13 +5,13 @@ import pft.addressbook.model.ContactData;
 
 public class ContactCreationTests extends TestBase {
 
-    @Test
+    @Test(enabled = false)
     public void testContactCreation(){
 
         app.getContactHelper().initContactCreation();
         app.getContactHelper().fillContactForm(new ContactData("a", "a", "a", "a", "a", "a", "test1"), true);
         app.getContactHelper().submitContactCreation();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
 
     }
 
