@@ -1,48 +1,60 @@
 package pft.addressbook.model;
 
 public class ContactData {
-    private final String firstname;
-    private final String middlename;
-    private final String lastname;
-    private final String nickname;
-    private final String home;
-    private final String mobile;
+    private int id = Integer.MAX_VALUE;
+    private String firstName;
+    private String middlename;
+    private String lastName;
+    private String nickname;
+    private String home;
+    private String mobile;
     private  String group;
+    private String allPhones;
 
 
-    public ContactData(String firstname, String middlename, String lastname, String nickname, String home, String mobile, String group) {
-        this.firstname = firstname;
-        this.middlename = middlename;
-        this.lastname = lastname;
-        this.nickname = nickname;
-        this.home = home;
-        this.mobile = mobile;
-        this.group = group;
-    }
+
+
+
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
-    public String getMiddlename() {
-        return middlename;
-    }
+//    public String getMiddlename() {
+//        return middlename;
+//    }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
-    public String getNickname() {
-        return nickname;
-    }
+//    public String getNickname() {
+//        return nickname;
+//    }
 
-    public String getHome() {
-        return home;
-    }
+//    public String getHome() {
+//        return home;
+//    }
 
-    public String getMobile() {
-        return mobile;
-    }
+//    public String getMobile() {
+//        return mobile;
+//    }
 
-    public String getGroup() { return group;
+//    public String getGroup() { return group; }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
+    public ContactData withFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+    public ContactData withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
     }
 }

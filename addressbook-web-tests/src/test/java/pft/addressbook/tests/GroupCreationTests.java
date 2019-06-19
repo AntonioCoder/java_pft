@@ -1,12 +1,13 @@
 package pft.addressbook.tests;
 
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pft.addressbook.model.GroupData;
+import pft.addressbook.model.Groups;
 
-import java.util.HashSet;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 
 public class GroupCreationTests extends TestBase{
@@ -16,16 +17,24 @@ public class GroupCreationTests extends TestBase{
   public void testGroupCreation() {
 
     app.goTo().groupPage();
-    List<GroupData> before = app.group().list();
+    Groups before = app.group().all();
     GroupData group = (new GroupData().withName("test2"));
     app.group().create(group);
-    List<GroupData> after = app.group().list();
-    Assert.assertEquals(after.size(), before.size() + 1);
-
-    group.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
-    before.add(group);
-    Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
+    assertThat(app.group().count(), equalTo(before.size() + 1));
+    Groups after = app.group().all();
+    assertThat(after, equalTo(
+            before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
+  public void testBadGroupCreation() {
+
+    app.goTo().groupPage();
+    Groups before = app.group().all();
+    GroupData group = (new GroupData().withName("test2`"));
+    app.group().create(group);
+    assertThat(app.group().count(), equalTo(before.size()));
+    Groups after = app.group().all();
+    assertThat(after, equalTo(before));
+  }
 
 }
