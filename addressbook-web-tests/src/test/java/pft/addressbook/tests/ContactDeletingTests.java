@@ -7,8 +7,8 @@ public class ContactDeletingTests extends TestBase {
 
     @Test(enabled = false)
     public void testContactDeleting(){
-        app.getContactHelper().selectContact("1");
-        app.getContactHelper().deleteSelectedContacts();
+        app.contact().selectContact("1");
+        app.contact().deleteSelectedContacts();
         app.wd.switchTo().alert().accept();
     }
 
